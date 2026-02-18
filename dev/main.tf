@@ -5,7 +5,7 @@ resource "azurerm_resource_group" "rg1" {
 }
 
 module "ServicePrincipal" {
-  source                 = "../modules/ServicePrincipal"
+  source                 = "./modules/ServicePrincipal"
   service_principal_name = var.service_principal_name
 
 
@@ -70,7 +70,7 @@ resource "azurerm_key_vault_secret" "example" {
 
 #create Azure Kubernetes Service
 module "aks" {
-  source                 = "../modules/aks/"
+  source                 = "./modules/aks/"
   service_principal_name = var.service_principal_name
   client_id              = module.ServicePrincipal.client_id
   client_secret          = module.ServicePrincipal.client_secret
